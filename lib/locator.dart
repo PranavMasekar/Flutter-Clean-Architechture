@@ -58,7 +58,8 @@ Future<void> init() async {
   );
 
   //! External
-  locator.registerFactoryAsync(() => SharedPreferences.getInstance());
+  final sharedPreference = await SharedPreferences.getInstance();
+  locator.registerLazySingleton(() => sharedPreference);
   locator.registerLazySingleton(() => http.Client());
   locator.registerLazySingleton(() => Connectivity());
 }

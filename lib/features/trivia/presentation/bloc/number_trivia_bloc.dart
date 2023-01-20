@@ -36,7 +36,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
   Future _handleGetNumberTriviaEvent(
       GetNumberTriviaEvent event, Emitter emit) async {
     final input = inputConverter.stringToInt(event.number);
-    input.fold(
+    await input.fold(
       (error) {
         emit(const Error(errorMsg: "Invalid input"));
       },
